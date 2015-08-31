@@ -1,0 +1,35 @@
+<section class="register">
+    <form name="myForm"
+          ng-submit="register()"
+          novalidate>
+        <h2>Register</h2>
+        <p>Register to check site</p>
+        <input type="text" name="firstname"  placeholder="First Name"
+               ng-model="user.firstname" ng-required="true"/>
+        <p class="error validationerror"
+           ng-show="myForm.firstname.$invalid && myForm.firstname.$touched">
+            First Name is required
+        </p>
+        <input type="text" name="lastname"  placeholder="Last Name"
+               ng-model="user.lastname" ng-required="true"/>
+        <p class="error validationerror"
+           ng-show="myForm.lastname.$invalid && myForm.lastname.$touched">
+            Last Name is required
+        </p>
+        <input type="email" name="email"  placeholder="Email" autofocus
+               ng-model="user.email" ng-required="true"/>
+        <p class="error validationerror"
+           ng-show="myForm.email.$invalid && myForm.email.$touched">
+            Must be a valid email
+        </p>
+        <input type="password" name="password" placeholder="Password"
+               ng-model="user.password" ng-required="true" />
+        <p class="error validationerror"
+           ng-show="myForm.password.$invalid && myForm.password.$touched">
+            Password is required
+        </p>
+        <button type="submit" class="btn"
+                ng-disabled="myForm.$invalid">Login</button>
+        <p>Or <a href="#register"> Register </a></p>
+    </form>
+</section>
