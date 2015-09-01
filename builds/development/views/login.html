@@ -4,6 +4,7 @@
           novalidate>
         <h2>Login</h2>
         <p>Login to see site features</p>
+        <p class="error errormessage" ng-show="message"> {{message}}</p>
         <input type="email" name="email"  placeholder="Email" autofocus
                ng-model="user.email" ng-required="true"/>
         <p class="error validationerror"

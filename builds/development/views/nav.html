@@ -1,8 +1,8 @@
 <div class="table">
     <ul>
         <li class="branding"><a href="#/">Angular Data</a></li>
-        <li><a href="#/meetings">Meetings</a></li>
-        <li><a href="#/login">Login</a></li>
-        <li><a href="#/register">Register</a></li>
+        <li><a href="#/meetings" ng-show="currentUser">Meetings</a></li>
+        <li><a href="#/login" ng-hide="currentUser">Login</a></li>
+        <li><a href="#/register" ng-hide="currentUser">Register</a></li>
     </ul>
 </div>

@@ -3,7 +3,7 @@
           ng-submit="register()"
           novalidate>
         <h2>Register</h2>
-        <p>Register to check site</p>
+        <p class="error errormessage" ng-show="message"> {{message}}</p>
         <input type="text" name="firstname"  placeholder="First Name"
                ng-model="user.firstname" ng-required="true"/>
         <p class="error validationerror"
@@ -29,7 +29,7 @@
             Password is required
         </p>
         <button type="submit" class="btn"
-                ng-disabled="myForm.$invalid">Login</button>
-        <p>Or <a href="#register"> Register </a></p>
+                ng-disabled="myForm.$invalid">Register</button>
+        <p>Or <a href="#login"> Login </a></p>
     </form>
 </section>
