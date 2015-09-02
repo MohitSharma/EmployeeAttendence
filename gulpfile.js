@@ -33,7 +33,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('views', function() {
-  src.views = ['app/views/*.html'];
+  src.views = ['app/views/**/*'];
   return gulp.src(src.views)
       .pipe(gulp.dest('build/views'));
 });

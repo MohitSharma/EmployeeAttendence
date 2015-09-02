@@ -6,7 +6,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a ng-hide="currentUser" class="navbar-brand" href="#/">
+            Employee
+        </a>
+        <a ng-show="currentUser" class="navbar-brand" href="#/dashboard">
             Employee
         </a>
     </div>
@@ -14,11 +17,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" collapse="navbarCollapsed">
         <ul class="nav navbar-nav navbar-right">
-            <li><a ng-show="currentUser" ng-href="#/meetings">Meetings
-        <span ng-show="howManyMeetings">
-          {{ '(' + howManyMeetings + ')' }}</span></a></li>
-            <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
-            <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
+            <li ng-show="currentUser"><a ng-href="#/employees">Employees<span ng-show="howManyEmployees">{{ '(' + howManyEmployees + ')' }}</span></a></li>
+            <li ng-hide="currentUser" ><a ng-href="#/login">Login</a></li>
+            <li ng-hide="currentUser" ><a ng-href="#/register">Register</a></li>
+            <li ng-show="currentUser"><a ng-href="#/logout" ng-click="logout()">Logout</a></li>
         </ul>
     </div>
 </nav>

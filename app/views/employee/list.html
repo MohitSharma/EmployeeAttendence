@@ -1,0 +1,19 @@
+<div class="meetings">
+    <button class="btn btn-primary pull-right" ng-click="open()">Add Employee</button>
+    <h2>Your employees</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Employee Name</th><th>Employee Code</th><th colspan="2">Operation</th>            
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="employee" ng-repeat="(key, employee) in employees">
+                <td>{{employee.name}}</td>
+                <td>{{employee.code}}</td>
+                <td><i class="glyphicon glyphicon-edit" ng-click="open(key)"></i></td>
+                <td><i class="glyphicon glyphicon-trash" ng-click="deleteEmployee(key)"></i></td>
+            </tr><!-- employees list -->   
+        </tbody>
+    </table>
+</div>

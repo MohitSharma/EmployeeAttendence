@@ -14,6 +14,10 @@ myApp.run(['$rootScope', '$location', function($rootScope, $location) {
 
 myApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
+        when('/', {
+            templateUrl: 'views/home.html',
+            controller:  'HomeController'
+        }).
         when('/login', {
             templateUrl: 'views/login.html',
             controller:  'RegistrationController'
@@ -30,9 +34,18 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/checkinslist.html',
             controller:  'CheckInsController'
         }).
-        when('/meetings', {
-            templateUrl: 'views/meetings.html',
-            controller: 'MeetingsController',
+        when('/employees', {
+            templateUrl: 'views/employee/list.html',
+            controller: 'EmployeesController',
+            resolve : {
+                currentAuth: function(Authentication) {
+                    return Authentication.requireAuth();
+                }
+            }
+        }).
+        when('/dashboard', {
+            templateUrl: 'views/dashboard.html',
+            controller:  'DashboardController',
             resolve : {
                 currentAuth: function(Authentication) {
                     return Authentication.requireAuth();

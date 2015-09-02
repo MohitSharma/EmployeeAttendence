@@ -2,26 +2,16 @@
     <form name="myForm"
           ng-submit="register()"
           novalidate>
-        <h2>Register</h2>
+        <h2>Register Your Organization</h2>
         <div class="form-group">
-            <p class="error errormessage" ng-show="message"> {{message}}</p>
-            <input class="form-control" type="text" name="firstname"  placeholder="First Name"
-                   ng-model="user.firstname" ng-required="true"/>
-            <p class="error validationerror"
-               ng-show="myForm.firstname.$invalid && myForm.firstname.$touched">
-                First Name is required
+            <input class="form-control" type="text" name="company"  placeholder="Organization Name"
+                   ng-model="user.company" ng-required="true"/>
+            <p class="error"
+               ng-show="myForm.company.$invalid && myForm.company.$touched">
+                Organization Name is required
             </p>
         </div>
-
-        <div class="form-group">
-
-            <input  class="form-control"  type="text" name="lastname"  placeholder="Last Name"
-                    ng-model="user.lastname" ng-required="true"/>
-            <p class="error validationerror"
-               ng-show="myForm.lastname.$invalid && myForm.lastname.$touched">
-                Last Name is required
-            </p>
-        </div>
+        
         <div class="form-group">
             <input class="form-control" type="email" name="email"  placeholder="Email" autofocus
                    ng-model="user.email" ng-required="true"/>
@@ -38,7 +28,7 @@
                 Password is required
             </p>
         </div>
-        <button class="form-control" type="submit" class="btn btn-default"
+        <button type="submit" class="btn btn-success form-control"
                 ng-disabled="myForm.$invalid">Register</button>
     </form>
 </section>

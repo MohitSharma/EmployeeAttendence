@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{label}} Employee <a href="javascript: void(0);" class="pull-right" ng-click="cancel()">x</a></h3>
+</div>
+<div class="modal-body">
+    <form class="addemployee"
+          name="myform"
+          ng-submit="saveEmployee()"
+          novalidate>
+        <div class="form-group">
+            <input class="form-control" type="text" name="name"
+                   placeholder="Employee Full Name"
+                   ng-model="name" ng-required="true">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="code"
+                   placeholder="Employee Code"
+                   ng-model="code" ng-required="true">
+        </div>
+        
+         <button type="submit" class="btn btn-danger form-control"
+                    ng-disabled="myform.$invalid">{{label}}</button>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+</div>

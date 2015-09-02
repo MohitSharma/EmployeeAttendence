@@ -31,8 +31,7 @@ myApp.factory('Authentication', function($firebaseAuth, $firebaseObject, $fireba
                 var firebaseUser = $firebaseObject(ref);
                 firebaseUser.date = Firebase.ServerValue.TIMESTAMP;
                 firebaseUser.regUser = regUser.uid;
-                firebaseUser.firstname =user.firstname;
-                firebaseUser.lastname = user.lastname;
+                firebaseUser.company =user.company;
                 firebaseUser.email = user.email;
                 firebaseUser.$save();
             });
