@@ -1,8 +1,10 @@
 <div class="table">
     <ul>
-        <li class="branding"><a href="#/">Angular Data</a></li>
-        <li><a href="#/meetings" ng-show="currentUser">Meetings</a></li>
-        <li><a href="#/login" ng-hide="currentUser">Login</a></li>
-        <li><a href="#/register" ng-hide="currentUser">Register</a></li>
+        <li class="branding"><a ng-href="#/">angularData</a></li>
+        <li><a ng-show="currentUser" ng-href="#/meetings">Meetings
+    <span ng-show="howManyMeetings">
+      {{ '(' + howManyMeetings + ')' }}</span></a></li>
+        <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
+        <li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
     </ul>
 </div>

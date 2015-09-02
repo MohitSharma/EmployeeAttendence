@@ -27,20 +27,28 @@ myApp.factory('Authentication', function($firebaseAuth, $firebaseObject, $fireba
         },
         register: function(user) {
             return authObj.$createUser({email: user.email, password: user.password}).then(function(regUser) {
-                var ref = new Firebase(FIREBASE_URL+'users');
-                var firebaseUsers = $firebaseArray(ref);
-
-                var userInfo = {
-                    date : Firebase.ServerValue.TIMESTAMP,
-                    regUser : regUser.uid,
-                    firstname: user.firstname,
-                    lastname : user.lastname,
-                    email: user.email
-                }; //user info
-                firebaseUsers.$add(userInfo);
+                var ref = new Firebase(FIREBASE_URL+'users/' + regUser.uid);
+                var firebaseUser = $firebaseObject(ref);
+                firebaseUser.date = Firebase.ServerValue.TIMESTAMP;
+                firebaseUser.regUser = regUser.uid;
+                firebaseUser.firstname =user.firstname;
+                firebaseUser.lastname = user.lastname;
+                firebaseUser.email = user.email;
+                firebaseUser.$save();
             });
-        }
+        },
+        requireAuth: function() {
+            return authObj.$requireAuth();
+        }, //require Authentication
+
+        waitForAuth: function() {
+            return authObj.$waitForAuth();
+        } //Wait until user is Authenticated
     }; // MyObject
+
+    $rootScope.signedIn = function() {
+        return myObject.signedIn();
+    }
 
     return myObject;
 });

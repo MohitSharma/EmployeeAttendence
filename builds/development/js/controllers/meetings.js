@@ -1,19 +1,32 @@
-myApp.controller('MeetingsController', function($scope, $firebase, $firebaseObject, $firebaseArray) {
-    var ref = new Firebase('https://mohitsharma.firebaseio.com/meetings');
-    var meetings = $firebaseArray(ref);
-    $scope.meetings = meetings;
+myApp.controller('MeetingsController',
+    function($scope, $rootScope, $firebaseAuth, $firebaseArray, Authentication,
+             CountMeetings, FIREBASE_URL) {
 
-    $scope.addMeeting = function() {
-        meetings.$add({
-            name: $scope.meetingname,
-            date: Firebase.ServerValue.TIMESTAMP
-        }).then(function() {
-            $scope.meetingname = '';
+        var ref = new Firebase(FIREBASE_URL);
+        var auth = $firebaseAuth(ref);
+
+        auth.$onAuth(function(authUser) {
+            if (authUser) {
+                var meetingsRef = new Firebase(FIREBASE_URL + '/users/' +
+                    $rootScope.currentUser.$id + '/meetings');
+                var meetingsInfo = $firebaseArray(meetingsRef);
+
+                meetingsInfo.$loaded().then(function(data) {
+                    $scope.meetings = data;
+                }); //make sure meetings data is loaded
+
+                $scope.addMeeting = function() {
+                    meetingsInfo.$add({
+                        name: $scope.meetingname,
+                        date: Firebase.ServerValue.TIMESTAMP
+                    }).then(function() {
+                        $scope.meetingname='';
+                    });
+                }; //addmeeting
+
+                $scope.deleteMeeting = function(key) {
+                    meetingsInfo.$remove(key);
+                }; //deleteMeeting
+            }
         });
-    };
-
-    $scope.deleteMeeting = function(key) {
-        meetings.$remove(key);
-    };
-
-});
+    }); //MeetingsController
