@@ -1,6 +1,7 @@
 
 myApp.controller('RegistrationController',
     function($scope, $firebaseAuth, $location, Authentication) {
+        $scope.navbarCollapsed = true;
 
         var ref = new Firebase('https://attendanceldcapp.firebaseio.com/');
         var auth = $firebaseAuth(ref);

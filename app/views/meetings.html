@@ -5,13 +5,14 @@
           name="myform"
           ng-submit="addMeeting()"
           novalidate>
-        <div class="inputwrapper">
-            <input type="text" name="meetingname"
+        <div class="form-inline">
+            <input class="form-control" type="text" name="meetingname"
                    placeholder="Meeting name"
                    ng-model="meetingname" ng-required="true">
+
+            <button type="submit" class="btn"
+                    ng-disabled="myform.$invalid">+</button>
         </div>
-        <button type="submit" class="btn"
-                ng-disabled="myform.$invalid">+</button>
     </form>
 
     <h2>Your meetings</h2>
